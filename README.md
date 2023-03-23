@@ -1,4 +1,4 @@
-# Selection Of Trades
+# Selection Of Trades 0.1.1
 
 ## Мысли
 
