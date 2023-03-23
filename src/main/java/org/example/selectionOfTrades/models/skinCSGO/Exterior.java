@@ -1,9 +1,11 @@
-package org.example.selectionOfTrades.models;
+package org.example.selectionOfTrades.models.skinCSGO;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +22,7 @@ public class Exterior {
     @Column(name = "tag_exterior", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String tag;
 
-
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+            mappedBy = "exterior")
+    private List<Skin> skin;
 }

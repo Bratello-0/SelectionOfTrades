@@ -1,10 +1,11 @@
-package org.example.selectionOfTrades.models;
-
+package org.example.selectionOfTrades.models.skinCSGO;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,8 @@ public class Quality {
     @Column(name = "tag_quality", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String tag;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private DataWeapon dataWeapon;
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+            mappedBy = "quality")
+    private List<Weapon> weapon;
 }
 

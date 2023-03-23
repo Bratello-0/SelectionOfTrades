@@ -6,9 +6,9 @@
 </head>
 <body>
 <h3>Hello!</h3>
-<#list weapons as weapon>
+<#list skins as skin>
     <dif>
-        <p>${weapon.name}</b> ${weapon.price}</p>
+        <p>${skin.id}</b> ${skin.price}</p>
     </dif>
     <#else>
     <h3>пусто</h3>
