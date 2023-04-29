@@ -1,9 +1,10 @@
-package org.example.selectionOfTrades.models.skinCSGO;
+package org.example.selectionOfTrades.models.skinCSGO.attributes;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.selectionOfTrades.models.skinCSGO.Weapon;
 
 import java.util.List;
 
@@ -21,9 +22,14 @@ public class DataWeapon {
     @Column(name = "weapon", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String weaponName;
     @Column(name = "tag_weapon", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
-    private String tag_weapon;
+    private String tag;
+
+    public DataWeapon(String weaponName, String tag_weapon) {
+        this.weaponName = weaponName;
+        this.tag = tag_weapon;
+    }
 
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
-    mappedBy = "dataWeapon")
+            mappedBy = "dataWeapon")
     private List<Weapon> weapon;
 }

@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.selectionOfTrades.models.skinCSGO.attributes.Collection;
+import org.example.selectionOfTrades.models.skinCSGO.attributes.DataWeapon;
+import org.example.selectionOfTrades.models.skinCSGO.attributes.Rarity;
 
 import java.util.List;
 
@@ -24,9 +27,10 @@ public class Weapon {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Collection collection;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Quality quality;
+    private Rarity rarity;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private DataWeapon dataWeapon;
+
 
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
             mappedBy = "weapon")

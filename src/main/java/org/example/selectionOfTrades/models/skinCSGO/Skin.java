@@ -1,19 +1,18 @@
 package org.example.selectionOfTrades.models.skinCSGO;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import org.example.selectionOfTrades.models.skinCSGO.attributes.Exterior;
+import org.example.selectionOfTrades.models.skinCSGO.attributes.Quality;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "Skin")
-public class Skin implements Serializable {
+public class Skin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,7 +24,7 @@ public class Skin implements Serializable {
     private Long quantity;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Category category;
+    private Quality quality;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Exterior exterior;
 

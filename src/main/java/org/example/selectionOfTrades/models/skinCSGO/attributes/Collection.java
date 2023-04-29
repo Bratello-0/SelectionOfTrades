@@ -1,9 +1,10 @@
-package org.example.selectionOfTrades.models.skinCSGO;
+package org.example.selectionOfTrades.models.skinCSGO.attributes;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.selectionOfTrades.models.skinCSGO.Weapon;
 
 import java.util.List;
 
@@ -21,6 +22,11 @@ public class Collection {
     private String caseName;
     @Column(name = "tag_case", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String tag;
+
+    public Collection(String caseName, String tag) {
+        this.caseName = caseName;
+        this.tag = tag;
+    }
 
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
             mappedBy = "collection")

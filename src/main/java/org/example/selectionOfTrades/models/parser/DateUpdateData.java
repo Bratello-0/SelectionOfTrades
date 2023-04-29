@@ -1,11 +1,11 @@
-package org.example.selectionOfTrades.models;
+package org.example.selectionOfTrades.models.parser;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -17,12 +17,15 @@ public class DateUpdateData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Basic
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDateTime date;
     @Column(name = "message", columnDefinition = "text")
     private String message;
-    @Column(name = "isFinish")
-    private boolean isFinish;
+
+    @PrePersist
+    private void init() {
+        date = LocalDateTime.now();
+    }
 }

@@ -1,15 +1,16 @@
-package org.example.selectionOfTrades.models.skinCSGO;
+package org.example.selectionOfTrades.models.skinCSGO.attributes;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.selectionOfTrades.models.skinCSGO.Skin;
 
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Quality")
 public class Quality {
@@ -18,12 +19,16 @@ public class Quality {
     @Column(name = "id")
     private Long id;
     @Column(name = "quality", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
-    private String type;
+    private String quality;
     @Column(name = "tag_quality", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String tag;
 
+    public Quality(String quality, String tag){
+        this.quality = quality;
+        this.tag = tag;
+    }
+
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
             mappedBy = "quality")
-    private List<Weapon> weapon;
+    private List<Skin> skin;
 }
-
