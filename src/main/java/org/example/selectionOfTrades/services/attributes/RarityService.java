@@ -36,7 +36,7 @@ public class RarityService {
 
     public void saveAllRarity(List<Rarity> rarityList) {
         rarityList.forEach((rarity) -> {
-            printLog(rarity,"Saving new");
+            printLog(rarity, "Saving new");
         });
         rarityRepository.saveAll(rarityList);
     }
@@ -44,7 +44,7 @@ public class RarityService {
     public void saveAllRarities(Map<String, String> mapRarity) {
         List<Rarity> rarityListToSave = new ArrayList<>();
         mapRarity.forEach((name, tag) -> {
-            if (!isExists(name)) {
+            if (!rarityRepository.existsByRarity(name)) {
                 rarityListToSave.add(new Rarity(name, tag));
             }
         });
@@ -54,13 +54,8 @@ public class RarityService {
         }
     }
 
-    public Boolean isExists(String rarity) {
-        if (rarityRepository.findByRarity(rarity).size() == 0)
-            return false;
-        return true;
-    }
 
     private void printLog(Rarity rarity, String message) {
-        log.info(String.join(" ", message, "{}; {};"), rarity.getRarity(), rarity.getTag());
+        log.info(String.join(" ", message, "name:{}; tag:{};"), rarity.getRarity(), rarity.getTag());
     }
 }

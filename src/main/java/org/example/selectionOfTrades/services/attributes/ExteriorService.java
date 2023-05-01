@@ -44,7 +44,7 @@ public class ExteriorService {
     public void saveAllExteriors(Map<String, String> mapExterior) {
         List<Exterior> exteriorListToSave = new ArrayList<>();
         mapExterior.forEach((name, tag) -> {
-            if (!isExists(name)) {
+            if (!exteriorRepository.existsByExterior(name)) {
                 exteriorListToSave.add(new Exterior(name, tag));
             }
         });
@@ -54,13 +54,8 @@ public class ExteriorService {
         }
     }
 
-    public Boolean isExists(String exterior) {
-        if (exteriorRepository.findByExterior(exterior).size() == 0)
-            return false;
-        return true;
-    }
 
     private void printLog(Exterior exterior, String message) {
-        log.info(String.join(" ", message, "{}; {};"), exterior.getExterior(), exterior.getTag());
+        log.info(String.join(" ", message, "name:{}; tag:{};"), exterior.getExterior(), exterior.getTag());
     }
 }

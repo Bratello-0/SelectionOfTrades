@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ExteriorRepository extends JpaRepository<Exterior, Long> {
-    public List<Exterior> findByExterior(String exterior);
+    List<Exterior> findByExterior(String exterior);
+    Boolean existsByExterior(String exterior);
+
 }

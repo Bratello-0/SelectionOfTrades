@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface QualityRepository extends JpaRepository<Quality, Long> {
     List<Quality> findByQuality(String quality);
+    Boolean existsByQuality(String quality);
 }

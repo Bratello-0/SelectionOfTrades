@@ -44,7 +44,7 @@ public class DataWeaponService {
     public void saveAllDataWeapons(Map<String, String> mapDataWeapon) {
         List<DataWeapon> dataWeaponListToSave = new ArrayList<>();
         mapDataWeapon.forEach((name, tag) -> {
-            if (!isExists(name)) {
+            if (!dataWeaponRepository.existsByWeaponName(name)) {
                 dataWeaponListToSave.add(new DataWeapon(name, tag));
             }
         });
@@ -54,13 +54,7 @@ public class DataWeaponService {
         }
     }
 
-    public Boolean isExists(String weaponName) {
-        if (dataWeaponRepository.findByWeaponName(weaponName).size() == 0)
-            return false;
-        return true;
-    }
-
     private void printLog(DataWeapon dataWeapon, String message) {
-        log.info(String.join(" ", message, "{}; {};"), dataWeapon.getWeaponName(), dataWeapon.getTag());
+        log.info(String.join(" ", message, "name:{}; tag:{};"), dataWeapon.getWeaponName(), dataWeapon.getTag());
     }
 }

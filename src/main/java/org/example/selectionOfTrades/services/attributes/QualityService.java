@@ -36,7 +36,7 @@ public class QualityService {
     public void saveAllQualities(Map<String, String> mapQuality) {
         List<Quality> qualityListToSave = new ArrayList<>();
         mapQuality.forEach((name, tag) -> {
-            if (!isExists(name)) {
+            if (!qualityRepository.existsByQuality(name)) {
                 qualityListToSave.add(new Quality(name, tag));
             }
         });
@@ -46,14 +46,9 @@ public class QualityService {
         }
     }
 
-    public Boolean isExists(String quality) {
-        if (qualityRepository.findByQuality(quality).size() == 0)
-            return false;
-        return true;
-    }
 
     private void printLog(Quality quality
             , String message) {
-        log.info(String.join(" ", message, "{}; {};"), quality.getQuality(), quality.getTag());
+        log.info(String.join(" ", message, "name:{}; tag:{};"), quality.getQuality(), quality.getTag());
     }
 }

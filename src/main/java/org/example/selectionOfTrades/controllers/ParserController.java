@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ParserController {
     private final ParserService parserService;
 
-    @GetMapping("/first_start")
+    @GetMapping("/parser/first_start")
     @ResponseBody
     public String firstStart() {
         parserService.parseAttributes(AttributeType.ALL_ATTRIBUTE);

@@ -37,7 +37,7 @@ public class CollectionService {
     public void saveAllCollections(Map<String, String> mapCollection) {
         List<Collection> collectionListToSave = new ArrayList<>();
         mapCollection.forEach((name, tag) -> {
-            if (!isExists(name)) {
+            if (!collectionRepository.existsByCaseName(name)) {
                 collectionListToSave.add(new Collection(name, tag));
             }
         });
@@ -47,13 +47,7 @@ public class CollectionService {
         }
     }
 
-    public Boolean isExists(String caseName) {
-        if (collectionRepository.findByCaseName(caseName).size() == 0)
-            return false;
-        return true;
-    }
-
     private void printLog(Collection collection, String message) {
-        log.info(String.join(" ", message, "{}; {};"), collection.getCaseName(), collection.getTag());
+        log.info(String.join(" ", message, "name:{}; tag:{};"), collection.getCaseName(), collection.getTag());
     }
 }

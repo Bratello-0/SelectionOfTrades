@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RarityRepository extends JpaRepository<Rarity, Long> {
     List<Rarity> findByRarity(String rarity);
+    Boolean existsByRarity(String rarity);
 }
