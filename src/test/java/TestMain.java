@@ -1,5 +1,5 @@
 import org.example.selectionOfTrades.configs.Config;
-import org.example.selectionOfTrades.models.parser.ParserSteam;
+import org.example.selectionOfTrades.models.parser.Parser;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +12,6 @@ public class TestMain {
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(Config.class);
 
-        ParserSteam parserSteam = context.getBean(ParserSteam.class);
+        Parser parser = context.getBean(Parser.class);
     }
 }

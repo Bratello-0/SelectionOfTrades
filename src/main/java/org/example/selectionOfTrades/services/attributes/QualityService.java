@@ -2,8 +2,8 @@ package org.example.selectionOfTrades.services.attributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.selectionOfTrades.models.skinCSGO.attributes.Quality;
-import org.example.selectionOfTrades.repositories.skinCSGO.attributes.QualityRepository;
+import org.example.selectionOfTrades.models.entities.attributes.Quality;
+import org.example.selectionOfTrades.services.gunSkinsCSGO.attributes.QualityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package org.example.selectionOfTrades.models.parser;
+package org.example.selectionOfTrades.models.entities.parser;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "requests_Steam")
-public class DateUpdateData {
+@Table(name = "log_requests")
+public class LogRequests {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

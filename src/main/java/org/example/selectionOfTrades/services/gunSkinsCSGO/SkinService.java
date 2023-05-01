@@ -1,9 +1,9 @@
-package org.example.selectionOfTrades.services;
+package org.example.selectionOfTrades.services.gunSkinsCSGO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.selectionOfTrades.models.skinCSGO.Skin;
-import org.example.selectionOfTrades.repositories.skinCSGO.SkinRepository;
+import org.example.selectionOfTrades.models.entities.gunSkinCSGO.Skin;
+import org.example.selectionOfTrades.repositories.gunSkinCSGO.SkinRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

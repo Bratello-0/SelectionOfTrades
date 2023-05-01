@@ -1,12 +1,12 @@
-package org.example.selectionOfTrades.models.skinCSGO;
+package org.example.selectionOfTrades.models.entities.gunSkinCSGO;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.selectionOfTrades.models.skinCSGO.attributes.Collection;
-import org.example.selectionOfTrades.models.skinCSGO.attributes.DataWeapon;
-import org.example.selectionOfTrades.models.skinCSGO.attributes.Rarity;
+import org.example.selectionOfTrades.models.entities.attributes.Collection;
+import org.example.selectionOfTrades.models.entities.attributes.DataWeapon;
+import org.example.selectionOfTrades.models.entities.attributes.Rarity;
 
 import java.util.List;
 

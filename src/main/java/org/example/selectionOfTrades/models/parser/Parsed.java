@@ -1,8 +1,8 @@
-package org.example.selectionOfTrades.interfaceModels.parser;
+package org.example.selectionOfTrades.models.parser;
 
 import org.example.selectionOfTrades.models.parser.packeger.Attributes;
 
-public interface Parser {
+public interface Parsed {
 
     Attributes getAttributes();
 }

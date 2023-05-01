@@ -1,8 +1,7 @@
 package org.example.selectionOfTrades.models.parser;
 
 import lombok.RequiredArgsConstructor;
-import org.example.selectionOfTrades.interfaceModels.parser.Parser;
-import org.example.selectionOfTrades.interfaceModels.parser.packeger.JsonPackaged;
+import org.example.selectionOfTrades.models.parser.packeger.JsonPackaged;
 import org.example.selectionOfTrades.models.parser.packeger.Attributes;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,7 +13,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class ParserSteam implements Parser {
+public class Parser implements Parsed {
 
     private final JsonPackaged jsonPackaged;
     //private LinkHandler linkHandler;

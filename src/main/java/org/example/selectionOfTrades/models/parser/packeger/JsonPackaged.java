@@ -1,4 +1,4 @@
-package org.example.selectionOfTrades.interfaceModels.parser.packeger;
+package org.example.selectionOfTrades.models.parser.packeger;
 
 import org.example.selectionOfTrades.models.parser.packeger.Attributes;
 

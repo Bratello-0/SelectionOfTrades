@@ -1,6 +1,6 @@
-package org.example.selectionOfTrades.repositories.skinCSGO.attributes;
+package org.example.selectionOfTrades.services.gunSkinsCSGO.attributes;
 
-import org.example.selectionOfTrades.models.skinCSGO.attributes.DataWeapon;
+import org.example.selectionOfTrades.models.entities.attributes.DataWeapon;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

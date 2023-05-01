@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Component
 @Getter
-//Преобразует Json в Entity
+//Преобразует Json в map
 public class Attributes {
     private final Map<AttributeType, Map<String, String>> mapAttributes = new HashMap<>();
 

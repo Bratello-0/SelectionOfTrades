@@ -2,7 +2,7 @@ package org.example.selectionOfTrades.controllers;
 
 
 import lombok.RequiredArgsConstructor;
-import org.example.selectionOfTrades.services.SkinService;
+import org.example.selectionOfTrades.services.gunSkinsCSGO.SkinService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
