@@ -3,7 +3,7 @@ package org.example.selectionOfTrades.services.attributes;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.selectionOfTrades.models.entities.attributes.Exterior;
-import org.example.selectionOfTrades.services.gunSkinsCSGO.attributes.ExteriorRepository;
+import org.example.selectionOfTrades.repositories.attributes.ExteriorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

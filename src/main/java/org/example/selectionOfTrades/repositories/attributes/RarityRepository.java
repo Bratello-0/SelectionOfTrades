@@ -1,4 +1,4 @@
-package org.example.selectionOfTrades.services.gunSkinsCSGO.attributes;
+package org.example.selectionOfTrades.repositories.attributes;
 
 import org.example.selectionOfTrades.models.entities.attributes.Rarity;
 import org.springframework.data.jpa.repository.JpaRepository;
