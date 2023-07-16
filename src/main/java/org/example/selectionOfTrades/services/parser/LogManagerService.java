@@ -2,7 +2,7 @@ package org.example.selectionOfTrades.services.parser;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.selectionOfTrades.models.parser.LogManager;
+import org.example.selectionOfTrades.models.log.LogManager;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

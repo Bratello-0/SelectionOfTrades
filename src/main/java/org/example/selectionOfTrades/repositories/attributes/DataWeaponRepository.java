@@ -8,5 +8,5 @@ import java.util.List;
 public interface DataWeaponRepository extends JpaRepository<DataWeapon, Long> {
 
     List<DataWeapon> findByWeaponName(String weaponName);
-    Boolean existsByWeaponName(String weaponName);
+    DataWeapon findByTag(String tag);
 }

@@ -22,7 +22,7 @@ public class ExteriorService {
     }
 
     public void saveExterior(Exterior exterior) {
-        printLog(exterior, "Saving new");
+        printLog(exterior, "Saving exterior");
         exteriorRepository.save(exterior);
     }
 
@@ -36,18 +36,17 @@ public class ExteriorService {
 
     public void saveAllExteriors(List<Exterior> exteriorList) {
         exteriorList.forEach(exterior -> {
-            printLog(exterior, "Saving new");
+            printLog(exterior, "Saving exterior");
         });
         exteriorRepository.saveAll(exteriorList);
     }
 
     public void saveAllExteriors(Map<String, String> mapExterior) {
+        if (mapExterior == null) {
+            return;
+        }
         List<Exterior> exteriorListToSave = new ArrayList<>();
-        mapExterior.forEach((name, tag) -> {
-            if (!exteriorRepository.existsByExterior(name)) {
-                exteriorListToSave.add(new Exterior(name, tag));
-            }
-        });
+        mapExterior.forEach((name, tag) -> exteriorListToSave.add(new Exterior(name, tag)));
 
         if (exteriorListToSave.size() != 0) {
             saveAllExteriors(exteriorListToSave);

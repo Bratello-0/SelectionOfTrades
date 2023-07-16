@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CollectionRepository extends JpaRepository<Collection, Long> {
     List<Collection> findByCaseName(String caseName);
-    Boolean existsByCaseName(String caseName);
+    Collection findByTag(String tag);
 }

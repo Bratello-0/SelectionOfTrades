@@ -17,13 +17,17 @@ public class CollectionService {
 
     private final CollectionRepository collectionRepository;
 
-    public List<Collection> listDataWeapon(String caseName) {
+    public List<Collection> listCollection(String caseName) {
         if (caseName != null) collectionRepository.findByCaseName(caseName);
         return collectionRepository.findAll();
     }
 
+    public Collection getCollection(String tag){
+        return collectionRepository.findByTag(tag);
+    }
+
     public void saveCollection(Collection collection) {
-        printLog(collection, "Saving new");
+        printLog(collection, "Saving collection");
         collectionRepository.save(collection);
     }
 
@@ -35,16 +39,17 @@ public class CollectionService {
     }
 
     public void saveAllCollections(Map<String, String> mapCollection) {
+        if (mapCollection == null) {
+            return;
+        }
         List<Collection> collectionListToSave = new ArrayList<>();
         mapCollection.forEach((name, tag) -> {
-            if (!collectionRepository.existsByCaseName(name)) {
-                collectionListToSave.add(new Collection(name, tag));
-            }
+            collectionListToSave.add(new Collection(name, tag));
         });
-
         if (collectionListToSave.size() != 0) {
             saveAllCollections(collectionListToSave);
         }
+        log.info("###Save end Collections! count save : {}###", collectionListToSave.size());
     }
 
     private void printLog(Collection collection, String message) {

@@ -2,6 +2,7 @@ package org.example.selectionOfTrades.services.attributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.selectionOfTrades.models.entities.attributes.Collection;
 import org.example.selectionOfTrades.models.entities.attributes.DataWeapon;
 import org.example.selectionOfTrades.repositories.attributes.DataWeaponRepository;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class DataWeaponService {
         return dataWeaponRepository.findAll();
     }
 
+    public DataWeapon getDataWeapon(String tag) {
+        return dataWeaponRepository.findByTag(tag);
+    }
+
     public void saveDataWeapon(DataWeapon dataWeapon) {
-        printLog(dataWeapon, "Saving new");
+        printLog(dataWeapon, "Saving dataWeapon");
         dataWeaponRepository.save(dataWeapon);
     }
 
@@ -36,18 +41,17 @@ public class DataWeaponService {
 
     public void saveAllDataWeapons(List<DataWeapon> dataWeaponList) {
         dataWeaponList.forEach((dataWeapon) -> {
-            printLog(dataWeapon, "Saving new");
+            printLog(dataWeapon, "Saving dataWeapon");
         });
         dataWeaponRepository.saveAll(dataWeaponList);
     }
 
     public void saveAllDataWeapons(Map<String, String> mapDataWeapon) {
+        if (mapDataWeapon == null) {
+            return;
+        }
         List<DataWeapon> dataWeaponListToSave = new ArrayList<>();
-        mapDataWeapon.forEach((name, tag) -> {
-            if (!dataWeaponRepository.existsByWeaponName(name)) {
-                dataWeaponListToSave.add(new DataWeapon(name, tag));
-            }
-        });
+        mapDataWeapon.forEach((name, tag) -> dataWeaponListToSave.add(new DataWeapon(name, tag)));
 
         if (dataWeaponListToSave.size() != 0) {
             saveAllDataWeapons(dataWeaponListToSave);

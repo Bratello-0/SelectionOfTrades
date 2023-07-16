@@ -22,24 +22,23 @@ public class QualityService {
     }
 
     public void saveQuality(Quality quality) {
-        printLog(quality, "Saving new");
+        printLog(quality, "Saving quality");
         qualityRepository.save(quality);
     }
 
     public void saveAllQualities(List<Quality> qualityList) {
         qualityList.forEach((quality) -> {
-            printLog(quality, "Saving new");
+            printLog(quality, "Saving quality");
         });
         qualityRepository.saveAll(qualityList);
     }
 
     public void saveAllQualities(Map<String, String> mapQuality) {
+        if(mapQuality== null){
+            return;
+        }
         List<Quality> qualityListToSave = new ArrayList<>();
-        mapQuality.forEach((name, tag) -> {
-            if (!qualityRepository.existsByQuality(name)) {
-                qualityListToSave.add(new Quality(name, tag));
-            }
-        });
+        mapQuality.forEach((name, tag) -> qualityListToSave.add(new Quality(name, tag)));
 
         if (qualityListToSave.size() != 0) {
             saveAllQualities(qualityListToSave);

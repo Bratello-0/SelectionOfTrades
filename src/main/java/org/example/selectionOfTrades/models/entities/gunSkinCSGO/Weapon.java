@@ -21,18 +21,33 @@ public class Weapon {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", columnDefinition = "varchar", length = 60, unique = true, nullable = false)
+    @Column(name = "name", columnDefinition = "varchar", length = 60)
     private String name;
 
+    @Column(name = "url_img", columnDefinition = "varchar", unique = true, length = 512)
+    private String urlImg;
+
+    @JoinColumn(name = "collectionId", nullable = false)
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Collection collection;
+    @JoinColumn(name = "rarityId")
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Rarity rarity;
+    @JoinColumn(name = "dataWeaponId")
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private DataWeapon dataWeapon;
 
-
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER,
             mappedBy = "weapon")
     private List<Skin> skins;
+
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "name=" + name +
+                ", collection=" + collection.getCaseName() +
+                ", rarity=" + rarity.getRarity() +
+                ", dataWeapon=" + dataWeapon.getWeaponName() +
+                '}';
+    }
 }

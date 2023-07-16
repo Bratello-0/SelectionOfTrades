@@ -2,6 +2,7 @@ package org.example.selectionOfTrades.services.attributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.selectionOfTrades.models.entities.attributes.Collection;
 import org.example.selectionOfTrades.models.entities.attributes.Rarity;
 import org.example.selectionOfTrades.repositories.attributes.RarityRepository;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class RarityService {
         return rarityRepository.findAll();
     }
 
+    public Rarity getRarity(String tag) {
+        return rarityRepository.findByTag(tag);
+    }
+
     public void saveRarity(Rarity rarity) {
-        printLog(rarity, "Saving new");
+        printLog(rarity, "Saving rarity");
         rarityRepository.save(rarity);
     }
 
@@ -36,18 +41,17 @@ public class RarityService {
 
     public void saveAllRarity(List<Rarity> rarityList) {
         rarityList.forEach((rarity) -> {
-            printLog(rarity, "Saving new");
+            printLog(rarity, "Saving rarity");
         });
         rarityRepository.saveAll(rarityList);
     }
 
     public void saveAllRarities(Map<String, String> mapRarity) {
+        if (mapRarity == null) {
+            return;
+        }
         List<Rarity> rarityListToSave = new ArrayList<>();
-        mapRarity.forEach((name, tag) -> {
-            if (!rarityRepository.existsByRarity(name)) {
-                rarityListToSave.add(new Rarity(name, tag));
-            }
-        });
+        mapRarity.forEach((name, tag) -> rarityListToSave.add(new Rarity(name, tag)));
 
         if (rarityListToSave.size() != 0) {
             saveAllRarity(rarityListToSave);

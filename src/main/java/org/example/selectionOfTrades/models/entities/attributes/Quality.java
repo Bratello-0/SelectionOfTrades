@@ -13,14 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "Quality")
-public class Quality {
+public class Quality implements IAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "quality", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String quality;
-    @Column(name = "tag_quality", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
+    @Column(name = "tag_quality", columnDefinition = "varchar", length = 40)
     private String tag;
 
     public Quality(String quality, String tag){
@@ -31,4 +31,9 @@ public class Quality {
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
             mappedBy = "quality")
     private List<Skin> skin;
+
+    @Override
+    public String getContext() {
+        return quality;
+    }
 }

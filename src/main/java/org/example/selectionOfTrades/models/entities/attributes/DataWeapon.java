@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "Data_Weapon")
-public class DataWeapon {
+public class DataWeapon implements IAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,7 +21,7 @@ public class DataWeapon {
 
     @Column(name = "weapon", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
     private String weaponName;
-    @Column(name = "tag_weapon", columnDefinition = "varchar", length = 40, unique = true, nullable = false)
+    @Column(name = "tag_weapon", columnDefinition = "varchar", length = 40)
     private String tag;
 
     public DataWeapon(String weaponName, String tag_weapon) {
@@ -32,4 +32,9 @@ public class DataWeapon {
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
             mappedBy = "dataWeapon")
     private List<Weapon> weapon;
+
+    @Override
+    public String getContext() {
+        return weaponName;
+    }
 }
